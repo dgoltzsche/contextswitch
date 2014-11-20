@@ -13,7 +13,7 @@ static inline long long unsigned time_ns(struct timespec* const ts) {
 }
 
 int main(void) {
-  const int iterations = 10000000;
+  const int iterations = 10000;
   struct timespec ts;
   const long long unsigned start_ns = time_ns(&ts);
   for (int i = 0; i < iterations; i++) {
@@ -22,7 +22,8 @@ int main(void) {
     }
   }
   const long long unsigned delta = time_ns(&ts) - start_ns;
-  printf("%i system calls in %lluns (%.1fns/syscall)\n",
-         iterations, delta, (delta / (float) iterations));
+  printf("%i,%.1f", iterations, (delta / (float) iterations));
+  //printf("%i system calls in %lluns (%.1fns/syscall)\n",
+         //iterations, delta, (delta / (float) iterations));
   return 0;
 }

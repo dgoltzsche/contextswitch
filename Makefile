@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -march=native -O3 -mno-avx -D_XOPEN_SOURCE=600 -D_GNU_SOURCE -std=c99 \
-         -W -Wall -Werror
+CFLAGS = -march=armv7 -O3 -D_XOPEN_SOURCE=600 -D_GNU_SOURCE -std=c99 \
+         -W -Wall
 LDFLAGS = -lrt -lpthread
 
 TARGETS = timectxsw timectxswws timesyscall timetctxsw timetctxsw2

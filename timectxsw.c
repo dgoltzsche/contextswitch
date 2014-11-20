@@ -19,7 +19,7 @@ static inline long long unsigned time_ns(struct timespec* const ts) {
 }
 
 int main(void) {
-  const int iterations = 500000;
+  const int iterations = 2500;
   struct timespec ts;
   const int shm_id = shmget(IPC_PRIVATE, sizeof (int), IPC_CREAT | 0666);
   const pid_t other = fork();
@@ -57,8 +57,9 @@ int main(void) {
   const long long unsigned delta = time_ns(&ts) - start_ns;
 
   const int nswitches = iterations << 2;
-  printf("%i process context switches in %lluns (%.1fns/ctxsw)\n",
-         nswitches, delta, (delta / (float) nswitches));
+  //printf("%i process context switches in %lluns (%.1fns/ctxsw)\n",
+         //nswitches, delta, (delta / (float) nswitches));
+  printf("%i,%.1f", nswitches, (delta / (float) nswitches));
   wait(futex);
   return 0;
 }
